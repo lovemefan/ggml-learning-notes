@@ -21,7 +21,7 @@ ggml.h 包含了一系列的计算图构建、张量的算子操作、自动微�
 
 GGML将数学函数定义为计算图，在这些图中执行张量操作，计算函数值，计算梯度，并使用各种优化算法优化函数。这种库在机器学习和科学计算中非常基础，用于构建和训练模型。
 
-![ggml-structure](figture/ggml-structure.png)
+![ggml-structure](figture/ggml-structure.jpg)
 
 ## 官方案例
 
