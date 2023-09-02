@@ -1,3 +1,5 @@
+# ggml学习笔记（一）项目编译
+
 ## 项目简介
 
 核心代码如下：
@@ -64,3 +66,24 @@
 
 ## 源码编译
 
+目前只支持linux和winsow，因为cmake里面只写了gnucc和clang编译器代码部分
+环境要求：
+
+* cmake >= 3.0
+* gcc >= 4.9
+
+```
+mkdir build && cd build && cmake .. && make -j8
+```
+
+###  本人遇到的问题
+
+1. 遇到的问题: fatal error: stdatomic.h: No such file or directory
+
+​	原因：gcc版本过低,  需要升级gcc
+
+
+
+2. 遇到问题： 在aarch64非苹果平台编译报错，selected processor does not support `fadd h0,h1,h0'
+
+   原因：暂不支持该平台，
