@@ -39,3 +39,5 @@ ggml是用c语言实现的一套张量操作库， 官网在[这里](https://ggm
 
 
 [ggml学习笔记（一）项目编译.md](notes/ggml学习笔记（一）项目编译.md)
+
+[ggml学习笔记（二）ggml.h源码解读.md](notes/ggml学习笔记（二）ggml.h源码解读.md)
