@@ -1,0 +1,121 @@
+<mxfile host="Electron" modified="2023-09-02T09:34:38.818Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.8 Chrome/112.0.5615.165 Electron/24.2.0 Safari/537.36" etag="UKmGidmS94WteqijmInI" version="21.2.8" type="device">
+  <diagram id="prtHgNgQTEPvFCAcTncT" name="Page-1">
+    <mxGraphModel dx="1283" dy="1992" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="dNxyNK7c78bLwvsdeMH5-11" value="ggml-context（ggml一次性申请的内存缓存，后续的所有张量及中间变量都共享这块内存）&amp;nbsp;" style="swimlane;html=1;startSize=20;horizontal=1;containerType=tree;glass=0;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="10" y="40" width="764" height="450" as="geometry" />
+        </mxCell>
+        <object label="&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;b&gt;ggml_tensor&lt;/b&gt;&lt;/font&gt;" id="FTnM4w_gT4HEOkNbLcE5-6">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;points=[[0,0,0,0,0],[0,0.25,0,0,0],[0,0.5,0,0,0],[0,0.75,0,0,0],[0,1,0,0,0],[0.25,0,0,0,0],[0.25,1,0,0,0],[0.5,0,0,0,0],[0.5,1,0,0,0],[0.75,0,0,0,0],[0.75,1,0,0,0],[1,0,0,0,0],[1,0.25,0,0,0],[1,0.5,0,0,0],[1,0.75,0,0,0],[1,1,0,0,0]];" vertex="1" parent="dNxyNK7c78bLwvsdeMH5-11">
+            <mxGeometry x="10" y="70" width="230" height="210" as="geometry">
+              <mxRectangle x="40" y="100" width="110" height="30" as="alternateBounds" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <mxCell id="FTnM4w_gT4HEOkNbLcE5-7" value="&lt;div style=&quot;font-family: &amp;quot;JetBrains Mono&amp;quot;, monospace;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;enum ggml_type    type;&lt;/font&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="FTnM4w_gT4HEOkNbLcE5-6">
+          <mxGeometry y="30" width="230" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="FTnM4w_gT4HEOkNbLcE5-8" value="&lt;div style=&quot;font-family: &amp;quot;JetBrains Mono&amp;quot;, monospace;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;enum ggml_backend backend;&lt;/font&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="FTnM4w_gT4HEOkNbLcE5-6">
+          <mxGeometry y="60" width="230" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="FTnM4w_gT4HEOkNbLcE5-10" value="&lt;div style=&quot;font-family: &amp;quot;JetBrains Mono&amp;quot;, monospace; font-size: 9.8pt;&quot;&gt;int n_dims;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="FTnM4w_gT4HEOkNbLcE5-6">
+          <mxGeometry y="90" width="230" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="FTnM4w_gT4HEOkNbLcE5-11" value="&lt;div style=&quot;font-family: &amp;quot;JetBrains Mono&amp;quot;, monospace; font-size: 9.8pt;&quot;&gt;&lt;div style=&quot;font-size: 9.8pt;&quot;&gt;int64_t  ne[GGML_MAX_DIMS];&lt;/div&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="FTnM4w_gT4HEOkNbLcE5-6">
+          <mxGeometry y="120" width="230" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="FTnM4w_gT4HEOkNbLcE5-9" value="&lt;div style=&quot;font-family: &amp;quot;JetBrains Mono&amp;quot;, monospace; font-size: 9.8pt;&quot;&gt;&lt;div style=&quot;font-size: 9.8pt;&quot;&gt;size_t  nb[GGML_MAX_DIMS];&lt;/div&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="FTnM4w_gT4HEOkNbLcE5-6">
+          <mxGeometry y="150" width="230" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="FTnM4w_gT4HEOkNbLcE5-12" value="&lt;div style=&quot;font-family: &amp;quot;JetBrains Mono&amp;quot;, monospace; font-size: 9.8pt;&quot;&gt;&lt;div style=&quot;font-size: 9.8pt;&quot;&gt;...... （细节看结构体介绍）&lt;/div&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="FTnM4w_gT4HEOkNbLcE5-6">
+          <mxGeometry y="180" width="230" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="FTnM4w_gT4HEOkNbLcE5-15" value="ggml-cgraph 计算图&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;&lt;/span&gt;" style="swimlane;html=1;startSize=20;horizontal=1;containerType=tree;glass=0;strokeWidth=1;dashed=1;" vertex="1" parent="dNxyNK7c78bLwvsdeMH5-11">
+          <mxGeometry x="270" y="60" width="460" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="FTnM4w_gT4HEOkNbLcE5-23" value="&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;x: ggml_tensor&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="FTnM4w_gT4HEOkNbLcE5-15">
+          <mxGeometry x="60" y="45" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="FTnM4w_gT4HEOkNbLcE5-24" value="&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;x: ggml_tensor&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="FTnM4w_gT4HEOkNbLcE5-15">
+          <mxGeometry x="190" y="45" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="FTnM4w_gT4HEOkNbLcE5-25" value="&lt;b&gt;&lt;font color=&quot;#ff0000&quot;&gt;mul&lt;/font&gt;&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="FTnM4w_gT4HEOkNbLcE5-15">
+          <mxGeometry x="140" y="112.5" width="80" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="FTnM4w_gT4HEOkNbLcE5-26" value="&lt;b&gt;&lt;font color=&quot;#ff0000&quot;&gt;mul&lt;/font&gt;&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="FTnM4w_gT4HEOkNbLcE5-15">
+          <mxGeometry x="190" y="175" width="80" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="FTnM4w_gT4HEOkNbLcE5-27" value="&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;a: ggml_tensor&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="FTnM4w_gT4HEOkNbLcE5-15">
+          <mxGeometry x="260" y="110" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="FTnM4w_gT4HEOkNbLcE5-28" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="FTnM4w_gT4HEOkNbLcE5-15" source="FTnM4w_gT4HEOkNbLcE5-23" target="FTnM4w_gT4HEOkNbLcE5-25">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="140" y="165" as="sourcePoint" />
+            <mxPoint x="190" y="115" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTnM4w_gT4HEOkNbLcE5-29" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.472;exitY=1.03;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitPerimeter=0;" edge="1" parent="FTnM4w_gT4HEOkNbLcE5-15" source="FTnM4w_gT4HEOkNbLcE5-24" target="FTnM4w_gT4HEOkNbLcE5-25">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="125" y="95" as="sourcePoint" />
+            <mxPoint x="185" y="120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTnM4w_gT4HEOkNbLcE5-30" value="&lt;b&gt;&lt;font color=&quot;#ff0000&quot;&gt;add&lt;/font&gt;&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="FTnM4w_gT4HEOkNbLcE5-15">
+          <mxGeometry x="120" y="250" width="80" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="FTnM4w_gT4HEOkNbLcE5-31" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="FTnM4w_gT4HEOkNbLcE5-15" source="FTnM4w_gT4HEOkNbLcE5-25" target="FTnM4w_gT4HEOkNbLcE5-26">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="125" y="95" as="sourcePoint" />
+            <mxPoint x="190" y="123" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTnM4w_gT4HEOkNbLcE5-32" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="FTnM4w_gT4HEOkNbLcE5-15" source="FTnM4w_gT4HEOkNbLcE5-27" target="FTnM4w_gT4HEOkNbLcE5-26">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="190" y="158" as="sourcePoint" />
+            <mxPoint x="240" y="185" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTnM4w_gT4HEOkNbLcE5-33" value="&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;b: ggml_tensor&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="FTnM4w_gT4HEOkNbLcE5-15">
+          <mxGeometry x="30" y="172.5" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="FTnM4w_gT4HEOkNbLcE5-34" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="FTnM4w_gT4HEOkNbLcE5-15" source="FTnM4w_gT4HEOkNbLcE5-33" target="FTnM4w_gT4HEOkNbLcE5-30">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="70" y="240" as="sourcePoint" />
+            <mxPoint x="139" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTnM4w_gT4HEOkNbLcE5-35" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="FTnM4w_gT4HEOkNbLcE5-15" source="FTnM4w_gT4HEOkNbLcE5-26" target="FTnM4w_gT4HEOkNbLcE5-30">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="260" y="220" as="sourcePoint" />
+            <mxPoint x="175" y="245" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTnM4w_gT4HEOkNbLcE5-2" value="&lt;div style=&quot;font-family: &amp;quot;JetBrains Mono&amp;quot;, monospace;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;struct ggml_init_params params = {&lt;br&gt;.mem_size   = 16*1024*1024,&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-family: &amp;quot;JetBrains Mono&amp;quot;, monospace;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;.mem_buffer = NULL,&lt;br&gt;};&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-family: &amp;quot;JetBrains Mono&amp;quot;, monospace;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;div style=&quot;&quot;&gt;struct ggml_context * ctx = ggml_init(params);&lt;/div&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=default;align=left;sketch=1;curveFitting=1;jiggle=2;shadow=0;glass=0;" vertex="1" parent="1">
+          <mxGeometry x="140" y="-120" width="367" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="FTnM4w_gT4HEOkNbLcE5-4" value="" style="curved=1;endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="280" y="-30" as="sourcePoint" />
+            <mxPoint x="340" y="30" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="280" y="20" />
+              <mxPoint x="340" y="-30" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTnM4w_gT4HEOkNbLcE5-36" value="" style="curved=1;endArrow=classic;html=1;rounded=0;exitX=1.004;exitY=0.753;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="FTnM4w_gT4HEOkNbLcE5-11">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="271" y="267" as="sourcePoint" />
+            <mxPoint x="380" y="190" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="321" y="267" />
+              <mxPoint x="271" y="217" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

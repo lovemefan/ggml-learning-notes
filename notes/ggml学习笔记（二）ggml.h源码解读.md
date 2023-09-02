@@ -19,10 +19,13 @@ ggml.h 包含了一系列的计算图构建、张量的算子操作、自动微�
 
 8. **行优先储存（Row-Major Order）**：行优先是一种多维数组元素存储方式，其中数组的元素按照行的顺序存储在内存中。这意味着每一行的元素都相邻存储，而不同行之间的元素可能不相邻。
 
-
 GGML将数学函数定义为计算图，在这些图中执行张量操作，计算函数值，计算梯度，并使用各种优化算法优化函数。这种库在机器学习和科学计算中非常基础，用于构建和训练模型。
 
+![ggml-structure](figture/ggml-structure.png)
+
 ## 官方案例
+
+
 
 定义一个前向计算$f(x)=ax^2 + b$，下列代码定义了参数初始化的过程和前向计算过程。
 
@@ -141,59 +144,43 @@ printf("f = %f\n", ggml_get_f32_1d(f, 0));
 | ggml_task_type |  |
 | ggml_compute_params |  |
 
+![ggml-structure](/Users/cenglingfan/Code/cpp-project/ggml-learning-notes/notes/figture/ggml-structure.png)
 
+```c
+struct ggml_tensor {
+        enum ggml_type    type;
+        enum ggml_backend backend;
 
-###  函数签名
+        int     n_dims;
+        int64_t ne[GGML_MAX_DIMS]; // number of elements
+        size_t  nb[GGML_MAX_DIMS]; // stride in bytes:
+                                   // nb[0] = sizeof(type)
+                                   // nb[1] = nb[0]   * ne[0] + padding
+                                   // nb[i] = nb[i-1] * ne[i-1]
 
-| 函数名                                                       | 函数说明                                                     |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| void    ggml_time_init(void)                                 | 初始化时间                                                   |
-| int64_t ggml_time_ms(void)                                   | 获取当前时间戳，单位为毫秒                                   |
-| int64_t ggml_time_us(void)                                   | 获取当前时间戳，单位为微秒                                   |
-| int64_t ggml_cycles(void);                                   |                                                              |
-| int64_t ggml_cycles_per_ms(void)                             |                                                              |
-| void ggml_numa_init(void)                                    | 初始化NUMA（Non-Uniform Memory Access, 非一致性内存访问），为了提升性能 |
-| void ggml_print_object (const struct ggml_object * obj)      | 打印object                                                   |
-| void ggml_print_objects(const struct ggml_context * ctx)     | 打印很多和object                                             |
-| int64_t ggml_nelements   (const struct ggml_tensor * tensor) |                                                              |
-| int64_t ggml_nrows       (const struct ggml_tensor * tensor) |                                                              |
-| size_t  ggml_nbytes      (const struct ggml_tensor * tensor) |                                                              |
-| ggml_nbytes_split(const struct ggml_tensor * tensor, int nrows_split) |                                                              |
-| int ggml_blck_size (enum ggml_type type)                     |                                                              |
-| size_t  ggml_type_size (enum ggml_type type)                 |                                                              |
-| float   ggml_type_sizef(enum ggml_type type)                 |                                                              |
-| const char * ggml_type_name(enum ggml_type type)             |                                                              |
-| const char * ggml_op_name  (enum ggml_op  op)                |                                                              |
-| const char * ggml_op_symbol(enum ggml_op   op)               |                                                              |
-| size_t  ggml_element_size(const struct ggml_tensor * tensor) |                                                              |
-| bool  ggml_is_quantized(enum ggml_type type)                 |                                                              |
-|                                                              |                                                              |
-|                                                              |                                                              |
-|                                                              |                                                              |
-|                                                              |                                                              |
-|                                                              |                                                              |
-|                                                              |                                                              |
-|                                                              |                                                              |
-|                                                              |                                                              |
-|                                                              |                                                              |
-|                                                              |                                                              |
-|                                                              |                                                              |
-|                                                              |                                                              |
-|                                                              |                                                              |
-|                                                              |                                                              |
-|                                                              |                                                              |
-|                                                              |                                                              |
-|                                                              |                                                              |
-|                                                              |                                                              |
-|                                                              |                                                              |
-|                                                              |                                                              |
-|                                                              |                                                              |
-|                                                              |                                                              |
-|                                                              |                                                              |
-|                                                              |                                                              |
-|                                                              |                                                              |
-|                                                              |                                                              |
-|                                                              |                                                              |
-|                                                              |                                                              |
-|                                                              |                                                              |
+        // compute data
+        enum ggml_op op;
+
+        // op params - allocated as int32_t for alignment
+        int32_t op_params[GGML_MAX_OP_PARAMS / sizeof(int32_t)];
+
+        bool is_param;
+
+        struct ggml_tensor * grad;
+        struct ggml_tensor * src[GGML_MAX_SRC];
+
+        // performance
+        int     perf_runs;
+        int64_t perf_cycles;
+        int64_t perf_time_us;
+
+        void * data;
+
+        char name[GGML_MAX_NAME];
+
+        void * extra; // extra things e.g. for ggml-cuda.cu
+
+        char padding[4];
+    };
+```
 
