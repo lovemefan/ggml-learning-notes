@@ -2,7 +2,7 @@
 
 
 //
-// GGML Tensor Library
+// GGML 张量库
 //
 // This documentation is still a work in progress.
 // If you wish some specific topics to be covered, feel free to drop a comment:
@@ -402,7 +402,7 @@ extern "C" {
     };
 
     enum ggml_object_type {
-        GGML_OBJECT_TENSOR,
+        ggml_object_type,
         GGML_OBJECT_GRAPH,
         GGML_OBJECT_WORK_BUFFER
     };
