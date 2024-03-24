@@ -144,7 +144,6 @@ printf("f = %f\n", ggml_get_f32_1d(f, 0));
 | ggml_task_type |  |
 | ggml_compute_params |  |
 
-![ggml-structure](/Users/cenglingfan/Code/cpp-project/ggml-learning-notes/notes/figture/ggml-structure.png)
 
 ```c
 struct ggml_tensor {

@@ -1,3 +1,0 @@
-[submodule "src/ggml"]
-	path = src/ggml
-	url = https://github.com/ggerganov/ggml.git
