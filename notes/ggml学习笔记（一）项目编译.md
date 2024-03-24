@@ -17,17 +17,33 @@
 ├── ggml.pc.in
 ├── include
 │   └── ggml
+│       ├── ggml-alloc.h
+│       ├── ggml-backend.h
 │       └── ggml.h
+│
 ├── requirements.txt
 └── src
     ├── CMakeLists.txt
+    ├── ggml-alloc.c
+    ├── ggml-backend-impl.h
+    ├── ggml-backend.c
+    ├── ggml-common.h
     ├── ggml-cuda.cu
     ├── ggml-cuda.h
+    ├── ggml-impl.h
+    ├── ggml-kompute.cpp
+    ├── ggml-kompute.h
     ├── ggml-metal.h
     ├── ggml-metal.m
     ├── ggml-metal.metal
     ├── ggml-opencl.cpp
     ├── ggml-opencl.h
+    ├── ggml-quants.c
+    ├── ggml-quants.h
+    ├── ggml-sycl.cpp
+    ├── ggml-sycl.h
+    ├── ggml-vulkan.cpp
+    ├── ggml-vulkan.h
     └── ggml.c
 
 
